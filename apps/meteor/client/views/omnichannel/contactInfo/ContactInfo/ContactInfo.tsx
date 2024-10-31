@@ -35,18 +35,9 @@ const ContactInfo = ({ contact, onClose }: ContactInfoProps) => {
 	const getCustomFields = useEndpoint('GET', '/v1/livechat/custom-fields');
 	const { data: { customFields } = {} } = useQuery(['/v1/livechat/custom-fields'], () => getCustomFields());
 
-	const {
-		name,
-		emails,
-		phones,
-		hasConflict,
-		conflictingFields,
-		createdAt,
-		lastChat,
-		contactManager,
-		customFields: userCustomFields,
-	} = contact;
+	const { name, emails, phones, conflictingFields, createdAt, lastChat, contactManager, customFields: userCustomFields } = contact;
 
+	const hasConflicts = conflictingFields && conflictingFields?.length > 0;
 	const showContactHistory = (currentRouteName === 'live' || currentRouteName === 'omnichannel-directory') && lastChat;
 
 	const checkIsVisibleAndScopeVisitor = (key: string) => {
@@ -58,7 +49,7 @@ const ContactInfo = ({ contact, onClose }: ContactInfoProps) => {
 	const customFieldEntries = canViewCustomFields
 		? Object.entries((userCustomFields ?? {}) as unknown as Record<string, string>).filter(
 				([key, value]) => checkIsVisibleAndScopeVisitor(key) && value,
-		  )
+			)
 		: [];
 
 	return (
@@ -81,7 +72,7 @@ const ContactInfo = ({ contact, onClose }: ContactInfoProps) => {
 							</Box>
 						</Box>
 						<IconButton
-							disabled={!canEditContact || hasConflict}
+							disabled={!canEditContact || hasConflicts}
 							title={canEditContact ? t('Edit') : t('Not_authorized')}
 							small
 							icon='pencil'
@@ -89,7 +80,7 @@ const ContactInfo = ({ contact, onClose }: ContactInfoProps) => {
 						/>
 					</Box>
 				)}
-				{hasConflict && (
+				{hasConflicts && (
 					<Callout
 						mbe={8}
 						alignItems='center'
@@ -127,7 +118,7 @@ const ContactInfo = ({ contact, onClose }: ContactInfoProps) => {
 					customFieldEntries={customFieldEntries}
 				/>
 			)}
-			{context === 'channels' && contact?.channels && <ContactInfoChannels channels={contact?.channels} />}
+			{context === 'channels' && <ContactInfoChannels channels={contact?.channels} />}
 			{context === 'history' && showContactHistory && <ContactInfoHistory contactId={contact._id} />}
 		</>
 	);

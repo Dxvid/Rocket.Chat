@@ -10,7 +10,7 @@ export interface ILivechatContactChannel {
 	field?: string;
 	value?: string;
 	verifiedAt?: Date;
-	details?: IOmnichannelSource;
+	details: IOmnichannelSource;
 	lastChat?: {
 		_id: string;
 		ts: Date;
@@ -28,7 +28,6 @@ export interface ILivechatContact extends IRocketChatRecord {
 	emails?: IVisitorEmail[];
 	contactManager?: string;
 	unknown?: boolean;
-	hasConflict?: boolean;
 	conflictingFields?: ILivechatContactConflictingField[];
 	customFields?: Record<string, string | unknown>;
 	channels?: ILivechatContactChannel[];
