@@ -8,15 +8,15 @@ import React, { useCallback, useState, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import semver from 'semver';
 
-import { useHasLicenseModule } from '../../../../../hooks/useHasLicenseModule';
-import { useIsEnterprise } from '../../../../../hooks/useIsEnterprise';
-import AddonRequiredModal from '../../../AppsList/AddonRequiredModal';
-import type { appStatusSpanResponseProps } from '../../../helpers';
-import { appButtonProps, appMultiStatusProps } from '../../../helpers';
-import type { AppInstallationHandlerParams } from '../../../hooks/useAppInstallationHandler';
-import { useAppInstallationHandler } from '../../../hooks/useAppInstallationHandler';
-import { useMarketplaceActions } from '../../../hooks/useMarketplaceActions';
-import { useMarketplaceContext } from '../../../hooks/useMarketplaceContext';
+import { useHasLicenseModule } from '../../../../hooks/useHasLicenseModule';
+import { useIsEnterprise } from '../../../../hooks/useIsEnterprise';
+import AddonRequiredModal from '../../AppsList/AddonRequiredModal';
+import type { appStatusSpanResponseProps } from '../../helpers';
+import { appButtonProps, appMultiStatusProps } from '../../helpers';
+import type { AppInstallationHandlerParams } from '../../hooks/useAppInstallationHandler';
+import { useAppInstallationHandler } from '../../hooks/useAppInstallationHandler';
+import { useMarketplaceActions } from '../../hooks/useMarketplaceActions';
+import { useMarketplaceContext } from '../../hooks/useMarketplaceContext';
 import AppStatusPriceDisplay from './AppStatusPriceDisplay';
 
 type AppStatusProps = {
