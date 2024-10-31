@@ -8334,7 +8334,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@rocket.chat/api-client@workspace:^, @rocket.chat/api-client@workspace:packages/api-client":
+"@rocket.chat/api-client@workspace:^, @rocket.chat/api-client@workspace:packages/api-client, @rocket.chat/api-client@workspace:~":
   version: 0.0.0-use.local
   resolution: "@rocket.chat/api-client@workspace:packages/api-client"
   dependencies:
@@ -9529,9 +9529,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@rocket.chat/mock-providers@workspace:packages/mock-providers"
   dependencies:
+    "@rocket.chat/core-typings": "workspace:~"
     "@rocket.chat/ddp-client": "workspace:~"
     "@rocket.chat/emitter": "npm:~0.31.25"
     "@rocket.chat/i18n": "workspace:~"
+    "@rocket.chat/rest-typings": "workspace:~"
     "@rocket.chat/ui-contexts": "workspace:*"
     "@storybook/react": "npm:^8.3.6"
     "@tanstack/react-query": "npm:^4.36.1"
@@ -9543,6 +9545,8 @@ __metadata:
     typescript: "npm:~5.6.3"
     use-sync-external-store: "npm:~1.2.2"
   peerDependencies:
+    "@rocket.chat/core-typings": "workspace:~"
+    "@rocket.chat/rest-typings": "workspace:~"
     "@tanstack/react-query": "*"
     react: "*"
   languageName: unknown
@@ -9930,7 +9934,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@rocket.chat/rest-typings@workspace:^, @rocket.chat/rest-typings@workspace:packages/rest-typings":
+"@rocket.chat/rest-typings@workspace:^, @rocket.chat/rest-typings@workspace:packages/rest-typings, @rocket.chat/rest-typings@workspace:~":
   version: 0.0.0-use.local
   resolution: "@rocket.chat/rest-typings@workspace:packages/rest-typings"
   dependencies:
@@ -10194,6 +10198,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@rocket.chat/ui-contexts@workspace:packages/ui-contexts"
   dependencies:
+    "@rocket.chat/api-client": "workspace:~"
     "@rocket.chat/core-typings": "workspace:^"
     "@rocket.chat/ddp-client": "workspace:~"
     "@rocket.chat/emitter": "npm:~0.31.25"
@@ -10211,8 +10216,9 @@ __metadata:
     typescript: "npm:~5.6.3"
     use-sync-external-store: "npm:^1.2.2"
   peerDependencies:
+    "@rocket.chat/api-client": "workspace:~"
     "@rocket.chat/core-typings": "workspace:^"
-    "@rocket.chat/ddp-client": "workspace:^"
+    "@rocket.chat/ddp-client": "workspace:~"
     "@rocket.chat/emitter": "*"
     "@rocket.chat/fuselage-hooks": "*"
     "@rocket.chat/i18n": "workspace:~"
