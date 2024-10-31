@@ -205,7 +205,6 @@ test.describe('OC - Manage Units', () => {
 			await poOmnichannelUnits.findRowByName(unit.name).click();
 			await expect(poOmnichannelUnits.contextualBar).toBeVisible();
 			await poOmnichannelUnits.selectDepartment({ name: department2.data.name, _id: department2.data._id });
-			await poOmnichannelUnits.selectMonitor('user2');
 			await poOmnichannelUnits.btnSave.click();
 			await expect(poOmnichannelUnits.contextualBar).not.toBeVisible();
 		});
