@@ -200,13 +200,14 @@ export class LivechatContactsRaw extends BaseRaw<ILivechatContact> implements IL
 		).toArray();
 	}
 
-	isContactActiveOnPeriod(visitorId: string, period: string): Promise<boolean> {
+	async isContactActiveOnPeriod(visitorId: string, period: string): Promise<boolean> {
 		const query = {
 			'channels.visitorId': visitorId,
 			'activity': period,
 		};
 
-		return this.findOne(query, { projection: { _id: 1 } }).then(Boolean);
+		const foundActiveContact = (await this.countDocuments(query)) > 0;
+		return foundActiveContact;
 	}
 
 	markContactActiveForPeriod(visitorId: string, period: string): Promise<UpdateResult> {

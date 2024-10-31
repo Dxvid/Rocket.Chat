@@ -17,6 +17,7 @@ import type {
 	IOmnichannelRoomInfo,
 	IOmnichannelInquiryExtraData,
 	IOmnichannelRoomExtraData,
+	ILivechatContact,
 } from '@rocket.chat/core-typings';
 import { LivechatInquiryStatus, OmnichannelSourceType, DEFAULT_SLA_CONFIG, UserStatus } from '@rocket.chat/core-typings';
 import { LivechatPriorityWeight } from '@rocket.chat/core-typings/src/ILivechatPriority';
@@ -90,7 +91,10 @@ export const createLivechatRoom = async (
 	const { _id, username, token, department: departmentId, status = 'online' } = guest;
 	const newRoomAt = new Date();
 
-	const activity = guest.activity || (await LivechatContacts.findOneByVisitorId(guest._id, { projection: { activity: 1 } }))?.activity;
+	const activity =
+		guest.activity ||
+		(await LivechatContacts.findOneByVisitorId<Pick<ILivechatContact, '_id' | 'activity'>>(guest._id, { projection: { activity: 1 } }))
+			?.activity;
 	logger.debug({
 		msg: `Creating livechat room for visitor ${_id}`,
 		visitor: { _id, username, departmentId, status, activity },
